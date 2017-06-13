@@ -1,21 +1,31 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const PATHS = {
-    source: path.join(__dirname,'source'),
-    build: path.join(__dirname,'build')
-}
 const common = {
-    entry: PATHS.source + '/index.js',
+    entry: {
+        script: './source/index.js',
+        style: './source/style.less'
+    },
     output: {
-        path: PATHS.build,
+        path: path.resolve(__dirname, 'build'),
         filename: '[name].js'
     },
+    module: {
+        rules: [{
+                test: /\.less$/,
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: [
+                        {loader: "css-loader", options: { importLoaders: 1 } }, "less-loader"
+                    ]
+                })
+            }]
+    },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: 'My App'
+        new ExtractTextPlugin({
+            filename: '[name].css'
         })
-    ],
+    ]
 };
 
 const developmentConfig = {

@@ -1,3 +1,5 @@
+npm run - запуск
+
 npm init - package.json
 npm install webpack -g - глобальная установка webpack, нужно сделать один раз
 npm install --save-dev webpack - локальная установка webpack
@@ -5,3 +7,6 @@ webpack.config.js - создать файл
 npm install html-webpack-plugin --save-dev - генерирует html
 npm install node-static --save-dev - сервер. Использовать для проверки перед продакшн
 npm install webpack-dev-server --save-dev - встроенный сервер вебпак. Использовать для разработки.
+npm install --save-dev webpack-merge - пока не буду использовать. Помогает разделять все модули на блоки
+npm install node-less style-loader css-loader less-loader --save-dev
+npm install --save-dev extract-text-webpack-plugin
