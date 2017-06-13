@@ -73,7 +73,7 @@
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = (function (array, className) {
     var menu = document.createElement('ul');
-    manu.className = className;
+    menu.className = className;
     var listItems = '';
     array.forEach(function (item) {
         listItems += '<li>' + item + '</li>';
