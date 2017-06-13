@@ -1,0 +1,4 @@
+npm init - package.json
+npm install webpack -g - глобальная установка webpack, нужно сделать один раз
+npm install --save-dev webpack - локальная установка webpack
+webpack.config.js - создать файл
