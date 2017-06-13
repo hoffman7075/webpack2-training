@@ -3,4 +3,5 @@ npm install webpack -g - глобальная установка webpack, нуж
 npm install --save-dev webpack - локальная установка webpack
 webpack.config.js - создать файл
 npm install html-webpack-plugin --save-dev - генерирует html
-npm install node-static --save-dev - сервер
+npm install node-static --save-dev - сервер. Использовать для проверки перед продакшн
+npm install webpack-dev-server --save-dev - встроенный сервер вебпак. Использовать для разработки.

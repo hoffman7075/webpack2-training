@@ -5,7 +5,7 @@ const PATHS = {
     source: path.join(__dirname,'source'),
     build: path.join(__dirname,'build')
 }
-module.exports = {
+const common = {
     entry: PATHS.source + '/index.js',
     output: {
         path: PATHS.build,
@@ -15,5 +15,25 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'My App'
         })
-    ]
+    ],
 };
+
+const developmentConfig = {
+    devServer: {
+        stats: "errors-only",
+        port: 9000
+    }
+}
+
+module.exports = function (env) {
+    if (env === 'production') {
+        return common;
+    }
+    if (env === 'development') {
+        return Object.assign(
+            {},
+            common,
+            developmentConfig
+        )
+    }
+}

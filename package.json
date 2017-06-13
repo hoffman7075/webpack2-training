@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack",
+    "start": "webpack-dev-server --env development",
+    "build": "webpack --env production",
     "server": "static build"
   },
   "repository": {
@@ -21,6 +22,7 @@
   "devDependencies": {
     "html-webpack-plugin": "^2.28.0",
     "node-static": "^0.7.9",
-    "webpack": "^2.6.1"
+    "webpack": "^2.6.1",
+    "webpack-dev-server": "^2.4.5"
   }
 }
