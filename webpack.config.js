@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const common = {
@@ -8,7 +9,7 @@ const common = {
     },
     output: {
         path: path.resolve(__dirname, 'build'),
-        filename: '[name].js'
+        filename: './js/[name].js'
     },
     module: {
         rules: [{
@@ -23,7 +24,14 @@ const common = {
     },
     plugins: [
         new ExtractTextPlugin({
-            filename: '[name].css'
+            filename: './css/[name].css'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common',
+        }),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
         })
     ]
 };
