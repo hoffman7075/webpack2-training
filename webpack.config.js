@@ -1,6 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const merge = require('webpack-merge');
+const devserver = require('./webpack/devserver');
+const less = require('./webpack/less');
+const uglifyJS = require('./webpack/js.uglify');
 
 const common = {
     entry: {
@@ -11,21 +14,7 @@ const common = {
         path: path.resolve(__dirname, 'build'),
         filename: './js/[name].js'
     },
-    module: {
-        rules: [{
-                test: /\.less$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: [
-                        {loader: "css-loader", options: { importLoaders: 1 } }, "less-loader"
-                    ]
-                })
-            }]
-    },
     plugins: [
-        new ExtractTextPlugin({
-            filename: './css/[name].css'
-        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: 'common',
         }),
@@ -36,22 +25,18 @@ const common = {
     ]
 };
 
-const developmentConfig = {
-    devServer: {
-        stats: "errors-only",
-        port: 9000
-    }
-}
-
 module.exports = function (env) {
-    if (env === 'production') {
-        return common;
-    }
+    return merge([
+        common,
+        less(),
+        uglifyJS()
+    ]);
+
     if (env === 'development') {
-        return Object.assign(
-            {},
+        return merge([
             common,
-            developmentConfig
-        )
+            less(),
+            devserver()
+        ]);
     }
 }

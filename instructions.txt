@@ -10,3 +10,5 @@ npm install webpack-dev-server --save-dev - встроенный сервер в
 npm install --save-dev webpack-merge - пока не буду использовать. Помогает разделять все модули на блоки
 npm install node-less style-loader css-loader less-loader --save-dev
 npm install --save-dev extract-text-webpack-plugin
+
+npm install --save-dev webpack-merge - разделяем конфиг на модули
